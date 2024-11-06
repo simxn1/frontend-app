@@ -8,6 +8,8 @@ First, install dependencies:
 npm install
 ```
 
+Then, create .env.local with the required `NEXT_PUBLIC_API_URL`.
+
 Then, run the development server:
 
 ```bash
