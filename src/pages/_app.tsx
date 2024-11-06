@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider>
-      <Box suppressHydrationWarning pt={8} maxWidth={1200} margin="auto">
+      <Box pt={8} maxWidth={1200} margin="auto">
         <AuthWrapper>
           <Component {...pageProps} />
         </AuthWrapper>
