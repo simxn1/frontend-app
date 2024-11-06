@@ -13,7 +13,7 @@ import { thinkEasyApi } from "@/services/apiClient";
 import { useRouter } from "next/router";
 import { Heading } from "@/components/Heading";
 
-type LoginFormData = {
+type LogInFormData = {
   email: string;
   password: string;
   firstName: string;
@@ -26,10 +26,10 @@ const LogInPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormData>();
+  } = useForm<LogInFormData>();
   const [isLogin, setIsLogin] = useState(true);
 
-  const onSubmit = async (data: LoginFormData) => {
+  const onSubmit = async (data: LogInFormData) => {
     try {
       let accessToken: string;
       let refreshToken: string;
@@ -61,15 +61,15 @@ const LogInPage = () => {
       if (error instanceof AxiosError && error.response?.data.message.length) {
         if (Array.isArray(error?.response.data.message)) {
           error.response?.data.message.forEach((errMessage: string) =>
-            toaster.error({ title: "Login failed: " + errMessage }),
+            toaster.error({ title: "Logging in failed: " + errMessage }),
           );
         } else {
           toaster.error({
-            title: "Login failed: " + error?.response.data.message,
+            title: "Logging in failed: " + error?.response.data.message,
           });
         }
       } else {
-        toaster.error({ title: "Login failed: " + error });
+        toaster.error({ title: "Logging in failed: " + error });
       }
     }
   };
