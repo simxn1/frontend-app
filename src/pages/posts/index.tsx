@@ -23,12 +23,7 @@ const AllPostsPage = () => {
         const response = await thinkEasyApi.postsControllerGetAllPosts();
         setIsLoading(false);
 
-        setPosts(
-          response.data.sort(
-            (a: PostResponse, b: PostResponse) =>
-              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-          ),
-        );
+        setPosts(response.data);
       } catch (error) {
         toaster.error({ title: "Failed to load posts: " + error });
       }

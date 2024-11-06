@@ -20,15 +20,20 @@ export const PostsList: FC<PostsListProps> = ({
     </Box>
   ) : (
     <Box>
-      {posts.map(({ id, title, content, authorId }) => (
-        <PostCard
-          key={id}
-          title={title}
-          content={content}
-          authorId={authorId}
-          isUserPage={isUserPage}
-        />
-      ))}
+      {posts
+        .sort(
+          (a: PostResponse, b: PostResponse) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        )
+        .map(({ id, title, content, authorId }) => (
+          <PostCard
+            key={id}
+            title={title}
+            content={content}
+            authorId={authorId}
+            isUserPage={isUserPage}
+          />
+        ))}
     </Box>
   );
 };
