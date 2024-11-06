@@ -1,11 +1,22 @@
-import { defineConfig } from "orval";
-
-export default defineConfig({
+module.exports = {
   api: {
-    input: "https://frontend-test-be.stage.thinkeasy.cz/api-json",
-    output: "./services/generatedApi.ts",
+    input: {
+      target: process.env.NEXT_PUBLIC_API_URL + "/api-json",
+      client: "axios",
+    },
+    output: {
+      target: "./src/services/generatedApi.ts",
+      schemas: "./src/services/models",
+      client: "axios",
+      override: {
+        mutator: {
+          path: "./src/services/apiClient.ts",
+          name: "apiClient",
+        },
+      },
+    },
     hooks: {
       afterAllFilesWrite: "prettier --write",
     },
   },
-});
+};
