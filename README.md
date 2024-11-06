@@ -2,15 +2,17 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies: 
+
+```bash
+npm install
+```
+
+Then, create .env.local with the required `NEXT_PUBLIC_API_URL`.
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 # frontend-app
